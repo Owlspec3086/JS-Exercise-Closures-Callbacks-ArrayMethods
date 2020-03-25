@@ -89,7 +89,7 @@ function processLastItem(stringList, callback) {
  * should return 994.
 */
 function processSum(num1, num2, callback) {
- return callback(num1 + num2);
+  return callback(num1 + num2);
 
 }
 
@@ -134,7 +134,7 @@ function processProduct(num1, num2, callback) {
  * should return 3.
 */
 function processDuplicateFree(list, callback) {
-return callback(list.filter((item, index) => list.indexOf(item) === index));
+  return callback(list.filter((item, index) => list.indexOf(item) === index));
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -181,13 +181,13 @@ function lowerCaseStrings(strings) {
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
 function isItAnApple(strings) {
-  let array = strings.map(item =>{
-    if (item === 'apple'){
+  let array = strings.map(item => {
+    if (item === 'apple') {
       return true;
     }
     else return false;
   });
-  
+
   return array;
 }
 
@@ -208,10 +208,10 @@ function isItAnApple(strings) {
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
 function removeApple(strings) {
-  const noApple = strings.filter(function(item){
+  const noApple = strings.filter(function (item) {
     return item !== 'apple';
   });
-return noApple;
+  return noApple;
 }
 
 /**
@@ -230,9 +230,9 @@ return noApple;
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
 function stringSmash(strings) {
-  return strings.reduce((accumulator, currentValue) =>{
+  return strings.reduce((accumulator, currentValue) => {
     return accumulator + currentValue;
-  })
+  });
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
@@ -250,9 +250,14 @@ function stringSmash(strings) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  const names = [];
+    runners.forEach(function(currentValue){
+      names.push(`${currentValue.last_name}, ${currentValue.first_name}`);
+    });
+    return names;
 }
+
 
 /**
  * ### Challenge `firstNamesAllCaps`
@@ -266,14 +271,13 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  return runners.map((elem) => `${elem.first_name.toUpperCase()}`);
 }
 
 /**
  * ### Challenge `getRunnersByTShirtSize`
- * * THIS IS A STRETCH PROBLEM! ATTEMPT ONLY AFTER COMPLETING ALL NON-STRETCH CHALLENGES!
- * 
+  * 
  * @instructions
  * The event director needs a way to find the runners that need
  * a specific t-shirt size, so they can place the orders easily.
@@ -284,8 +288,13 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  const runnerShirts = runners.filter(function(currentValue){
+    if (currentValue.shirt_size === tShirtSize){
+      return runners;
+    };
+  });
+  return runnerShirts;
 }
 
 /**
@@ -299,8 +308,11 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+ const sum = runners.reduce(function(accumulator, currentValue){
+   return accumulator + currentValue.donation;
+ } 1,);
+ return sum;
 }
 
 /////////////// CLOSURES ///////////////
@@ -376,7 +388,7 @@ if (typeof exports !== 'undefined') {
   if (processSum) { module.exports.processSum = processSum }
   if (processProduct) { module.exports.processProduct = processProduct }
   if (processDuplicateFree) { module.exports.processDuplicateFree = processDuplicateFree }
-  if (lowerCaseStrings ) { module.exports.lowerCaseStrings = lowerCaseStrings}
+  if (lowerCaseStrings) { module.exports.lowerCaseStrings = lowerCaseStrings }
   if (isItAnApple) { module.exports.isItAnApple = isItAnApple }
   if (removeApple) { module.exports.removeApple = removeApple }
   if (stringSmash) { module.exports.stringSmash = stringSmash }
